@@ -41,7 +41,8 @@ public class GooglyEyes extends PApplet {
     static final int HEIGHT = 800;
     
     PImage face;
-    
+    int lastX;
+    int lastY;
     
     @Override
     public void settings() {
@@ -57,7 +58,21 @@ public class GooglyEyes extends PApplet {
     @Override
     public void draw() {
     	background (face);
-    	ellipse (300,300,150,150);
+    	fill(255,255,255);
+    	ellipse (260,270,250,250);
+    	ellipse (525,270,250,250);
+    	fill (0,0,0);
+    	if (mouseX > 260 -125 && mouseX <260+125 && mouseY < 270 + 125 && mouseY > 270 - 125) {
+    	ellipse (mouseX,mouseY,100,100);
+    	lastX = mouseX;
+    	lastY = mouseY;
+    	ellipse (mouseX + 265,mouseY,100,100);
+    	
+    	}
+    	else {
+    		ellipse(lastX,lastY,100,100);
+    		ellipse(lastX + 265,lastY,100,100);
+    	}
     }
 
     static public void main(String[] args) {
